@@ -64,6 +64,23 @@ int main(int argc, char** argv)
     printf( "  Temperature Status        %s\n", getBatteryStatusTemperature( bsb ));
     printf( "  Voltage Status            %s\n", getBatteryStatusVoltage( bsb ));
 
+    printf( " --------------------------------------------------------\n" );
+    printf( "Load                    0x3200  Status Bits %u  %0X\n", dsb, dsb );
+    printf( " --------------------------------------------------------\n" );
+    printf( "  Load Status                      %s\n", getDischargingStatusInputVoltageStatus( dsb ));
+    printf( "  Load Power                       %s\n", getDischargingStatusOutputPower( dsb ));
+    printf( "  Discharge is Shorted             %s\n", (isdischargeStatusShorted( dsb ) ? "Yes" : "No " ));
+    printf( "  Discharge is Unable to Start     %s\n", (isdischargeStatusUnableToDischarge( dsb ) ? "Yes" : "No " ));
+    printf( "  Discharge is Unable to Stop      %s\n", (isdischargeStatusUnableToStopDischarge( dsb ) ? "Yes" : "No " ));
+    printf( "  Output Voltage is Abnormal       %s\n", (isdischargeStatusOutputVoltageAbnormal( dsb ) ? "Yes" : "No " ));
+    printf( "  Input is Over Voltage            %s\n", (isdischargeStatusInputOverVoltage( dsb ) ? "Yes" : "No " ));
+    printf( "  Is Shorted in High Voltage       %s\n", (isdischargeStatusShortedInHighVoltage( dsb ) ? "Yes" : "No " ));
+    printf( "  Boost is Over Voltage            %s\n", (isdischargeStatusBoostOverVoltage( dsb ) ? "Yes" : "No " ));
+    printf( "  Output is Over Voltage           %s\n", (isdischargeStatusOutputOverVoltage( dsb ) ? "Yes" : "No " ));
+    printf( "  Discharge Status Normal          %s\n", (isdischargeStatusNormal( dsb ) ? "Yes" : "No " ));
+    printf( "  Discharge is Running             %s\n", (isdischargeStatusRunning( dsb ) ? "Yes" : "No " ));
+    
+    
     
     epsolarModbusDisconnect();
     
