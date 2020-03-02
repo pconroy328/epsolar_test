@@ -40,6 +40,8 @@ int main(int argc, char** argv)
     printf( "Load                    0x3200  Status Bits %u  %0X\n", dsb, dsb );
     
     printf( " --------------------------------------------------------\n" );
+    printf( "Device/Array/Charging   0x3201  Status Bits %u  %0X\n", csb, csb );
+    printf( " --------------------------------------------------------\n" );
     printf( "  PV Status:                   %s\n", getChargingEquipmentStatusInputVoltageStatus( csb ));
     printf( "  Charging MOSFET Shorted      %s\n", (isChargingMOSFETShorted( csb ) ? "Yes" : "No " ));
     printf( "  Charging MOSFET Open         %s\n", (isChargingMOSFETOpen( csb ) ? "Yes" : "No " ));
@@ -54,7 +56,14 @@ int main(int argc, char** argv)
     printf( "  Charging Status Normal       %s\n", (isChargingStatusNormal( csb ) ? "Yes" : "No " ));
     printf( "  Charging Status Running      %s\n", (isChargingStatusRunning( csb ) ? "Yes" : "No " ));
          
-    
+    printf( " --------------------------------------------------------\n" );
+    printf( "Battery                 0x3200  Status Bits %u  %0X\n", bsb, bsb );
+    printf( " --------------------------------------------------------\n" );
+    printf( "  Identification Status     %s\n", getBatteryStatusIdentification( bsb ));
+    printf( "  Inner Resistance Status   %s\n", getBatteryStatusInnerResistance( bsb ));
+    printf( "  Temperature Status        %s\n", getBatteryStatusTemperature( bsb ));
+    printf( "  Voltage Status            %s\n", getBatteryStatusVoltage( bsb ));
+
     
     epsolarModbusDisconnect();
     
