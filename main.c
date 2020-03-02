@@ -40,7 +40,7 @@ int main(int argc, char** argv)
     printf( "Load                    0x3200  Status Bits %u  %0X\n", dsb, dsb );
     
     printf( " --------------------------------------------------------\n" );
-    printf( "PV Status: %s\n", getChargingEquipmentStatusInputVoltageStatus( csb ));
+    printf( "  PV Status:                   %s\n", getChargingEquipmentStatusInputVoltageStatus( csb ));
     printf( "  Charging MOSFET Shorted      %s\n", (isChargingMOSFETShorted( csb ) ? "Yes" : "No " ));
     printf( "  Charging MOSFET Open         %s\n", (isChargingMOSFETOpen( csb ) ? "Yes" : "No " ));
     printf( "  Anti Reverse MOSFET Shorted  %s\n", (isAntiReverseMOSFETShort( csb ) ? "Yes" : "No " ));
@@ -50,7 +50,7 @@ int main(int argc, char** argv)
     printf( "  Load MOSFET is Shorted       %s\n", (isLoadMOSFETShorted( csb ) ? "Yes" : "No " ));
     printf( "  Three Circuits in DisEquilib %s\n", (isDisequilibriumInThreeCircuits( csb ) ? "Yes" : "No " ));
     printf( "  PV Input is Shorted          %s\n", (isPVInputShorted( csb ) ? "Yes" : "No " ));
-    printf( "  Charging Status              %s\n", (getChargingStatus( csb ) ? "Yes" : "No " ));
+    printf( "  Charging Status              %s\n", getChargingStatus( csb ) );
     printf( "  Charging Status Normal       %s\n", (isChargingStatusNormal( csb ) ? "Yes" : "No " ));
     printf( "  Charging Status Running      %s\n", (isChargingStatusRunning( csb ) ? "Yes" : "No " ));
          
