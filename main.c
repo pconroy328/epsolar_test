@@ -35,10 +35,27 @@ int main(int argc, char** argv)
     uint16_t bsb = eps_getBatteryStatusBits();
     uint16_t dsb = eps_getdisChargingEquipmentStatusBits();
     
-    printf( "Charging    Status Bits %u  %0X\n", csb, csb );
-    printf( "Battery     Status Bits %u  %0X\n", bsb, bsb );
-    printf( "Discharging Status Bits %u  %0X\n", dsb, dsb );
-
+    printf( "Device/Array/Charging   0x3201  Status Bits %u  %0X\n", csb, csb );
+    printf( "Battery                 0x3200  Status Bits %u  %0X\n", bsb, bsb );
+    printf( "Load                    0x3200  Status Bits %u  %0X\n", dsb, dsb );
+    
+    printf( " --------------------------------------------------------\n" );
+    printf( "PV Status: %s\n", getChargingEquipmentStatusInputVoltageStatus( csb ));
+    printf( "  Charging MOSFET Shorted      %s\n", (isChargingMOSFETShorted( csb ) ? "Yes" : "No " ));
+    printf( "  Charging MOSFET Open         %s\n", (isChargingMOSFETOpen( csb ) ? "Yes" : "No " ));
+    printf( "  Anti Reverse MOSFET Shorted  %s\n", (isAntiReverseMOSFETShort( csb ) ? "Yes" : "No " ));
+    printf( "  PV Input is Over Current     %s\n", (isInputOverCurrent( csb ) ? "Yes" : "No " ));
+    printf( "  Load is Over Current         %s\n", (isLoadOverCurrent( csb ) ? "Yes" : "No " ));
+    printf( "  Load is Shorted              %s\n", (isLoadShorted( csb ) ? "Yes" : "No " ));
+    printf( "  Load MOSFET is Shorted       %s\n", (isLoadMOSFETShorted( csb ) ? "Yes" : "No " ));
+    printf( "  Three Circuits in DisEquilib %s\n", (isDisequilibriumInThreeCircuits( csb ) ? "Yes" : "No " ));
+    printf( "  PV Input is Shorted          %s\n", (isPVInputShorted( csb ) ? "Yes" : "No " ));
+    printf( "  Charging Status              %s\n", (getChargingStatus( csb ) ? "Yes" : "No " ));
+    printf( "  Charging Status Normal       %s\n", (isChargingStatusNormal( csb ) ? "Yes" : "No " ));
+    printf( "  Charging Status Running      %s\n", (isChargingStatusRunning( csb ) ? "Yes" : "No " ));
+         
+    
+    
     epsolarModbusDisconnect();
     
     return (EXIT_SUCCESS);
