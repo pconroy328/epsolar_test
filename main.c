@@ -37,6 +37,8 @@ void     leakTest ()
 
 int main(int argc, char** argv)
 {
+    Logger_Initialize( "/tmp/tets.log", 5 );           
+
     leakTest();
     exit( 1 );
     
