@@ -17,11 +17,29 @@
 #include "log4c.h"
 #include "libepsolar.h"
 
-/*
- * 
- */
+#include <libmqttrv.h>
+
+// -----------------------------------------------------------------------------
+void     leakTest ()
+{
+    printf( "LEAK TEST -- MQTT RV Library Version [%s]\n", MQTT_GetLibraryVersion() );
+    MQTTBrokers_t   *list = NULL;
+    list = MQTT_FindAllBrokers( "_mqtt._tcp", NULL );
+
+
+    MQTTBrokers_t   *tmpPtr;
+    int     count = -1;
+    LL_COUNT( list, tmpPtr, count );
+    printf( "LEAK TEST -- Found %d hosts\n", count );    
+}
+
+
+
 int main(int argc, char** argv)
 {
+    leakTest();
+    exit( 1 );
+    
     //
     //  Connect to the EPSolar Solar Charge Controller
     //  Pass in NULL to use default port defined in libepsolar/epsolar.c

@@ -39,7 +39,7 @@
           <standard>3</standard>
         </cTool>
         <linkerTool>
-          <commandLine>-lepsolar -lmodbus -llog4c</commandLine>
+          <commandLine>-lepsolar -lmodbus -llog4c -llibmqttrv -lavahi-client -lavahi-common -llog4c -lmosquitto</commandLine>
         </linkerTool>
       </compileType>
       <item path="main.c" ex="false" tool="0" flavor2="0">

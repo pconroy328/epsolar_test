@@ -60,7 +60,7 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/statusbits: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/statusbits ${OBJECTFILES} ${LDLIBSOPTIONS} -lepsolar -lmodbus -llog4c
+	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/statusbits ${OBJECTFILES} ${LDLIBSOPTIONS} -lepsolar -lmodbus -llog4c -llibmqttrv -lavahi-client -lavahi-common -llog4c -lmosquitto
 
 ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
